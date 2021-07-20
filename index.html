@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validating & Structuring JSON over WebSockets</title>
 </head>
+
 <body>
     <h1>Validating & Structuring JSON over WebSockets</h1>
     <ul class="tsummary">
@@ -16,9 +18,16 @@
     <script>
         const ws = new WebSocket("ws://localhost:8082");
 
-        ws.addEventListener("open", e =>{
-            ws.send("beo");
+        ws.addEventListener("open", e => {
+            ws.send(JSON.stringify({
+                event: "PLAYER_MOVEMENT",
+                payload: {
+                    x: 250,
+                    y: 160
+                }
+            }));
         });
     </script>
 </body>
+
 </html>
